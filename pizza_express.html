@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Express — 1:25 HM</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --text:#171717; --muted:#6b6b6b; --line:#ddd8cf; --accent:#171717; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .wrap{max-width:1050px;margin:auto;padding:28px 18px 60px}
+  header{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+  h1{font-size:38px;letter-spacing:-1.8px;margin:0}.sub{color:var(--muted);margin-top:5px}
+  .badge{border:1px solid var(--line);padding:9px 12px;border-radius:999px;font-weight:700;background:var(--card)}
+  .hero{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:20px}
+  .hero .card{padding:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
+  .big{font-size:34px;font-weight:800;letter-spacing:-1px}.small{font-size:13px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .week{padding:18px;margin-bottom:14px}.weekhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+  .week h2{margin:0;font-size:21px}.km{font-weight:800}
+  .sessions{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .session{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+  .day{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .type{font-weight:800;margin:5px 0 8px}.detail{font-size:13px;line-height:1.45}.rest{color:var(--muted)}
+  .key{border-width:2px}
+  details{margin-top:10px}.detailbox{margin-top:8px;padding:10px;border-top:1px solid var(--line);font-size:12px;color:#444}
+  footer{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.5}
+  @media(max-width:800px){.hero,.sessions{grid-template-columns:1fr}.grid{grid-template-columns:1fr}header{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1>Pizza Express</h1><div class="sub">10-week-ish build to Lago Maggiore · 1:25 target</div></div>
+  <div class="badge">08 NOV 2026</div>
+</header>
+
+<div class="hero">
+  <div class="card"><div class="small">RACE TARGET</div><div class="big">1:25:00 · 4:02/km</div><div class="sub">Current benchmark: 1:27:35 · 4:09/km</div></div>
+  <div class="card"><div class="small">PLAN RULES</div><div style="font-weight:750;line-height:1.55;margin-top:6px">Max 60 km/week · max 23–24 km long run · 3 running days + Sunday long run · 48–72h between runs · Monday 4×4 bike.</div></div>
+</div>
+
+<div id="app"></div>
+
+<footer>
+  Pace guide is based on the current 1:27:35 benchmark and should be adjusted if your current fitness has moved materially.
+  Easy = conversational; steady = controlled aerobic; threshold = hard but repeatable; HM = target 4:02/km.
+  With the ITB history, pain that escalates during a run or alters mechanics is a reason to stop and reassess rather than force the session.
+</footer>
+</div>
+
+<script>
+const weeks = [
+{w:1, dates:"Sep 2–6", km:"~42", s:[
+["MON","Bike + upper","4×4 min Assault Bike; 3 min easy between. 10 min warm-up + 8 min cool-down. Upper strength 40–50 min.","VO₂"],
+["TUE","Upper + light legs","45–60 min. Light unilateral work: 2×8/side split squat, 2×10/side step-down, calf 3×12. RPE 6.","Strength"],
+["WED","MWLR","60 min easy @ 5:00–5:25/km. Total 60 min.","Run"],
+["THU","Full body + heavy legs","60–75 min. 3×5 squat/leg press, 3×5 RDL, 2×6 split squat, upper accessories. ~2 RIR.","Strength"],
+["FRI","KEY · threshold","2 km easy + 3×8 min @ 4:18–4:22/km, 2 min jog + 2 km easy. ~10–11 km total.","KEY"],
+["SAT","Hike/rest","Rest or 45–90 min easy hike. No hard climbs.","Recovery"],
+["SUN","Long run","15 km easy @ 4:55–5:20/km. Keep effort very comfortable.","Long"]]},
+{w:2, dates:"Sep 7–13", km:"~46", s:[
+["MON","Bike + upper","4×4 min hard; 3 min easy. 10 min warm-up + 8 min cool-down. Upper 40–50 min.","VO₂"],
+["TUE","Upper + light legs","45–60 min. Same unilateral menu, 2 sets each; RPE 6.","Strength"],
+["WED","MWLR","65 min easy @ 4:55–5:20/km. Total 65 min.","Run"],
+["THU","Full body + heavy legs","3×5 main lower lift + 3×5 hinge + 2×6 unilateral. Keep 2 RIR.","Strength"],
+["FRI","KEY · threshold","2 km easy + 4×7 min @ 4:15–4:20/km, 2 min jog + 2 km easy. ~11–12 km.","KEY"],
+["SAT","Hike/rest","Rest or easy hike.","Recovery"],
+["SUN","Long run","17 km easy @ 4:50–5:15/km. Final 3 km may progress to ~4:30/km if completely comfortable.","Long"]]},
+{w:3, dates:"Sep 14–20", km:"~49", s:[
+["MON","Bike + upper","4×4 min hard; 3 min easy. Keep final rep controlled. Upper 40–50 min.","VO₂"],
+["TUE","Upper + light legs","Light unilateral strength, 2×8 each. No failure.","Strength"],
+["WED","MWLR","70 min easy @ 4:50–5:15/km.","Run"],
+["THU","Full body + heavy legs","Heavy but low volume: 3×4 squat/press + 3×5 hinge + 2×6 unilateral.","Strength"],
+["FRI","KEY · HM bridge","2 km easy + 3×2 km @ 4:08–4:10/km, 2 min jog + 2 km easy. ~12–13 km.","KEY"],
+["SAT","Hike/rest","Rest or easy hike.","Recovery"],
+["SUN","Long run","18 km easy. Last 4 km @ 4:25–4:15/km only if ITB is quiet.","Long"]]},
+{w:4, dates:"Sep 21–27", km:"~52", s:[
+["MON","Bike + upper","4×4 min; 3 min easy. Upper 40–50 min.","VO₂"],
+["TUE","Upper + light legs","2×8 unilateral + calves. RPE 6.","Strength"],
+["WED","MWLR","75 min easy @ 4:50–5:15/km.","Run"],
+["THU","Full body + heavy legs","3×4 main lift, 3×5 hinge, 2×6 unilateral; 2 RIR.","Strength"],
+["FRI","KEY · HM specific","2 km easy + 3×2 km @ 4:04–4:06/km, 2 min jog + 2 km easy. ~13 km.","KEY"],
+["SAT","Hike/rest","Rest/easy hike.","Recovery"],
+["SUN","Long run","20 km: 14 km easy + 4 km @ 4:20–4:15 + 2 km easy.","Long"]]},
+{w:5, dates:"Sep 28–Oct 4", km:"~55", s:[
+["MON","Bike + upper","4×4 min; 3 min easy. Upper 40–50 min.","VO₂"],
+["TUE","Upper + light legs","2×8 unilateral; calves 3×12; no failure.","Strength"],
+["WED","MWLR","85 min easy @ 4:45–5:10/km.","Run"],
+["THU","Full body + heavy legs","3×4 squat/press + 3×5 hinge + 2×6 unilateral. Keep volume controlled.","Strength"],
+["FRI","KEY · HM specific","2 km easy + 3×2 km @ 4:02–4:04/km, 2 min jog + 2 km easy. ~13 km.","KEY"],
+["SAT","Hike/rest","Rest or easy hike.","Recovery"],
+["SUN","Long run","21 km: first 15 km easy, final 6 km @ 4:20→4:10/km. Do not force 4:02.","Long"]]},
+{w:6, dates:"Oct 5–11", km:"~57", s:[
+["MON","Bike + upper","4×4 min; 3 min easy. Upper 40–45 min.","VO₂"],
+["TUE","Upper + light legs","2×8 unilateral; keep legs fresh for Friday.","Strength"],
+["WED","MWLR","90 min easy. ~18 km depending on pace; conversational throughout.","Run"],
+["THU","Full body + heavy legs","Reduce lower-body volume 20–25%: 2–3 work sets per main lift.","Strength"],
+["FRI","KEY · HM specific","2 km easy + 2×3 km @ 4:02/km, 3 min jog + 2 km easy. ~13 km.","KEY"],
+["SAT","Hike/rest","Rest preferred this week.","Recovery"],
+["SUN","Long run","22 km easy @ ~4:50–5:15/km. No fast finish.","Long"]]},
+{w:7, dates:"Oct 12–18", km:"~59–60", s:[
+["MON","Bike + upper","4×4 min, but cap effort at ~90–95% max; 3 min easy. Upper 40 min.","VO₂"],
+["TUE","Upper + light legs","Very light: 2×6 unilateral + calves. Leave fresh.","Strength"],
+["WED","MWLR","95 min easy. Roughly 18–20 km.","Run"],
+["THU","Full body + heavy legs","Low-volume maintenance only: 2×3–4 main lower lifts + upper work.","Strength"],
+["FRI","KEY · peak HM session","2 km easy + 3×3 km @ 4:02–4:04/km, 3 min jog + 2 km easy. ~16 km total.","KEY"],
+["SAT","Hike/rest","REST preferred.","Recovery"],
+["SUN","Long run","23 km: 13 km easy + 5 km @ 4:15→4:10 + 5 km easy. Keep it controlled.","Long"]]},
+{w:8, dates:"Oct 19–25", km:"~55–58", s:[
+["MON","Bike + upper","3×4 min hard; 3 min easy. Upper 35–45 min.","VO₂"],
+["TUE","Upper + light legs","Light maintenance only.","Strength"],
+["WED","MWLR","100 min easy, conversational. Roughly 19–21 km.","Run"],
+["THU","Full body + heavy legs","Maintenance: 2 sets per lower movement; no grinding reps.","Strength"],
+["FRI","KEY · race rehearsal","2 km easy + 6 km @ 4:02/km continuous + 2 km easy. ~10 km.","KEY"],
+["SAT","Hike/rest","Rest.","Recovery"],
+["SUN","Long run","20–21 km easy. Optional final 3 km @ ~4:15 if fresh.","Long"]]},
+{w:9, dates:"Oct 26–Nov 1", km:"~44–47", s:[
+["MON","Bike + upper","3×4 min; 3 min easy. Upper 35–40 min.","VO₂"],
+["TUE","Upper + light legs","Very light maintenance; no soreness.","Strength"],
+["WED","MWLR","75–80 min easy.","Run"],
+["THU","Full body + heavy legs","~50–60% normal lower-body volume; finish feeling fresh.","Strength"],
+["FRI","KEY · confidence","2 km easy + 5 km @ 4:02/km + 2 km easy. ~9 km.","KEY"],
+["SAT","Hike/rest","Rest.","Recovery"],
+["SUN","Long run","18 km relaxed. No fast finish.","Long"]]},
+{w:10, dates:"Nov 2–8", km:"~30 + race", s:[
+["MON","Bike + upper","3×3 min controlled, 3 min easy. Upper 30–35 min; no lower-body fatigue.","VO₂"],
+["TUE","Upper + light legs","30–40 min easy. 1–2 light sets only.","Strength"],
+["WED","Easy run","45–50 min easy + 4×20 sec relaxed strides, 60 sec walk/jog.","Run"],
+["THU","Strength","Very light full body; 1–2 sets, no heavy legs.","Strength"],
+["FRI","KEY · opener","2 km easy + 3×1 km @ 4:02/km, 2 min jog + 1–2 km easy. ~7–8 km.","KEY"],
+["SAT","Rest","Complete rest or 20–30 min walk.","Recovery"],
+["SUN","RACE · Lago Maggiore","21.1 km. Target 1:25:00 = 4:02/km average. Suggested: first 3 km 4:04–4:05, settle 4:02, race from 15 km.","RACE"]]}
+];
+
+const app=document.getElementById("app");
+weeks.forEach(x=>{
+  const el=document.createElement("section"); el.className="card week";
+  el.innerHTML=`<div class="weekhead"><h2>Week ${x.w} <span class="small">· ${x.dates}</span></h2><div class="km">${x.km} km</div></div>
+  <div class="sessions">${x.s.map((s,i)=>`
+    <div class="session ${s[5]==='KEY'?'key':''}">
+      <div class="day">${s[0]}</div><div class="type">${s[1]}</div>
+      <div class="detail">${s[2]}</div>
+      <div class="small" style="margin-top:7px">${s[3]}</div>
+    </div>`).join("")}</div>`;
+  app.appendChild(el);
+});
+</script>
+</body>
+</html>
