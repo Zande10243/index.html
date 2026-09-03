@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+<title>Pizza Express — 1:25 HM</title>
+
+<style>
+:root{
+  --bg:#f5f5f3;
+  --card:#ffffff;
+  --text:#171717;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --dark:#111827;
+  --soft:#f0f1f2;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.45;
+}
+
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:0 20px;
+}
+
+header{
+  background:var(--dark);
+  color:white;
+  padding:38px 0 32px;
+}
+
+.brand{
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.75;
+}
+
+h1{
+  font-size:clamp(32px,6vw,58px);
+  line-height:1;
+  margin:10px 0 14px;
+  letter-spacing:-.04em;
+}
+
+.subtitle{
+  font-size:17px;
+  color:#d1d5db;
+  max-width:680px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:26px;
+}
+
+.hero-stat{
+  border:1px solid #374151;
+  border-radius:14px;
+  padding:17px;
+  background:#1f2937;
+}
+
+.hero-stat strong{
+  display:block;
+  font-size:25px;
+}
+
+.hero-stat span{
+  font-size:12px;
+  color:#9ca3af;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(245,245,243,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+
+.nav-inner{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:11px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.nav-inner a{
+  white-space:nowrap;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  padding:8px 11px;
+  border-radius:9px;
+  background:white;
+  border:1px solid var(--line);
+}
+
+section{
+  padding:34px 0 0;
+}
+
+.section-title{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:14px;
+}
+
+h2{
+  font-size:26px;
+  margin:0;
+  letter-spacing:-.025em;
+}
+
+.week-meta{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.rules{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.rule{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+}
+
+.rule strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:3px;
+}
+
+.rule span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.days{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.day{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:17px;
+}
+
+.day.key{
+  border:2px solid var(--dark);
+}
+
+.day-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.day-name{
+  font-weight:800;
+  font-size:15px;
+}
+
+.badge{
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:5px 7px;
+  border-radius:7px;
+  background:var(--dark);
+  color:white;
+}
+
+.day h3{
+  margin:0 0 7px;
+  font-size:18px;
+  letter-spacing:-.015em;
+}
+
+.day p{
+  margin:5px 0;
+  font-size:14px;
+}
+
+.day .details{
+  color:#4b5563;
+  font-size:13px;
+}
+
+.pace{
+  font-weight:800;
+}
+
+.week-total{
+  margin-top:12px;
+  background:var(--dark);
+  color:white;
+  border-radius:12px;
+  padding:13px 15px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.note{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px;
+  margin-top:28px;
+}
+
+footer{
+  padding:45px 0 60px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+@media(max-width:720px){
+
+  .wrap{
+    padding:0 14px;
+  }
+
+  .nav-inner{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .hero-grid,
+  .rules,
+  .days{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding-top:27px;
+  }
+
+  .day{
+    padding:15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="wrap">
+
+  <div class="brand">Pizza Express</div>
+
+  <h1>1:25 Half Marathon</h1>
+
+  <div class="subtitle">
+    10-week build to the Lago Maggiore Half Marathon — Sunday 8 November 2026.
+  </div>
+
+  <div class="hero-grid">
+
+    <div class="hero-stat">
+      <span>Race target</span>
+      <strong>1:25:00</strong>
+      <span>4:02/km</span>
+    </div>
+
+    <div class="hero-stat">
+      <span>Current benchmark</span>
+      <strong>1:27:35</strong>
+      <span>≈4:09/km</span>
+    </div>
+
+  </div>
+
+</div>
+
+</header>
+
+
+<nav>
+
+<div class="nav-inner">
+
+<a href="#rules">Rules</a>
+
+<a href="#w1">W1</a>
+<a href="#w2">W2</a>
+<a href="#w3">W3</a>
+<a href="#w4">W4</a>
+<a href="#w5">W5</a>
+<a href="#w6">W6</a>
+<a href="#w7">W7</a>
+<a href="#w8">W8</a>
+<a href="#w9">W9</a>
+<a href="#w10">Race Week</a>
+
+</div>
+
+</nav>
+
+
+<main class="wrap">
+
+
+<!-- PLAN RULES -->
+
+<section id="rules">
+
+<div class="section-title">
+<h2>Plan rules</h2>
+</div>
+
+<div class="rules">
+
+<div class="rule">
+<strong>≤60 km</strong>
+<span>Weekly running maximum</span>
+</div>
+
+<div class="rule">
+<strong>23–24 km</strong>
+<span>Maximum long run</span>
+</div>
+
+<div class="rule">
+<strong>48–72h</strong>
+<span>Between running sessions</span>
+</div>
+
+<div class="rule">
+<strong>4×4 bike</strong>
+<span>Monday VO₂ stimulus</span>
+</div>
+
+</div>
+
+<div class="note">
+
+<strong>Weekly rhythm:</strong>
+
+Monday bike + upper strength ·
+Tuesday upper + light unilateral legs ·
+Wednesday aerobic run ·
+Thursday full body + low-volume heavy legs ·
+Friday key run ·
+Saturday rest/hike ·
+Sunday long run.
+
+</div>
+
+</section>
+
+
+
+<!-- WEEK 1 -->
+
+<section id="w1">
+
+<div class="section-title">
+
+<h2>Week 1</h2>
+
+<div class="week-meta">
+2–6 Sep · ≈42 km
+</div>
+
+</div>
+
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+10 min warm-up →
+<span class="pace">4×4 min hard</span> →
+3 min easy between →
+8 min cooldown.
+</p>
+
+<p class="details">
+Upper strength 40–50 min.
+Hard but controlled; no need to sprint the final rep.
+</p>
+
+</div>
+
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Upper + Light Legs</h3>
+
+<p>
+Split squat 2×8/side ·
+step-down 2×10/side ·
+calf 3×12.
+</p>
+
+<p class="details">
+RPE ~6. Keep 3–4 reps in reserve.
+No soreness chasing.
+</p>
+
+</div>
+
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 60 min</h3>
+
+<p class="pace">
+5:00–5:25/km
+</p>
+
+<p class="details">
+Conversational throughout.
+Keep it genuinely easy.
+</p>
+
+</div>
+
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Full Body + Heavy Legs</h3>
+
+<p>
+Squat/leg press 3×5 ·
+RDL 3×5 ·
+split squat 2×6/side +
+upper accessories.
+</p>
+
+<p class="details">
+~2 reps in reserve.
+Heavy, but low volume.
+</p>
+
+</div>
+
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>3×8 min Threshold</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×8 min @ 4:18–4:22/km</span> →
+2 min jog recoveries →
+2 km easy.
+</p>
+
+<p class="details">
+≈10–11 km total.
+Controlled threshold, not racing.
+</p>
+
+</div>
+
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest / Easy Hike</h3>
+
+<p>
+Rest preferred.
+Alternatively 45–90 min easy hiking.
+</p>
+
+</div>
+
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 15 km</h3>
+
+<p class="pace">
+4:55–5:20/km
+</p>
+
+<p class="details">
+Easy throughout.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈42 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 2 -->
+
+<section id="w2">
+
+<div class="section-title">
+<h2>Week 2</h2>
+<div class="week-meta">7–13 Sep · ≈46 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+10 min warm-up →
+4×4 min hard →
+3 min easy recoveries →
+8 min cooldown.
+</p>
+
+<p class="details">
+Upper strength 40–50 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Upper + Light Legs</h3>
+
+<p>
+Split squat 2×8/side ·
+step-down 2×10/side ·
+calf 3×12.
+</p>
+
+<p class="details">
+RPE ~6. Keep it fresh.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 65 min</h3>
+
+<p class="pace">
+4:55–5:20/km
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Full Body + Heavy Legs</h3>
+
+<p>
+3×5 main lower lift ·
+3×5 hinge ·
+2×6 unilateral +
+upper accessories.
+</p>
+
+<p class="details">
+~2 reps in reserve.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>4×7 min Threshold</h3>
+
+<p>
+2 km easy →
+<span class="pace">4×7 min @ 4:15–4:20/km</span> →
+2 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈11–12 km total.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest / Easy Hike</h3>
+
+<p>
+Rest or 45–90 min easy hike.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 17 km</h3>
+
+<p class="pace">
+4:50–5:15/km
+</p>
+
+<p class="details">
+Optional final 3 km around 4:30/km if completely comfortable.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈46 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 3 -->
+
+<section id="w3">
+
+<div class="section-title">
+<h2>Week 3</h2>
+<div class="week-meta">14–20 Sep · ≈49 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+4×4 min hard, 3 min easy.
+Final rep controlled.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Light Unilateral Legs</h3>
+
+<p>
+2×8 split squat/side + calves.
+No failure.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 70 min</h3>
+
+<p class="pace">
+4:50–5:15/km
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Full Body + Heavy Legs</h3>
+
+<p>
+3×4 squat/press ·
+3×5 hinge ·
+2×6 unilateral.
+</p>
+
+<p class="details">
+~2 reps in reserve.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>3×2 km Controlled</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×2 km @ 4:08–4:10/km</span> →
+2 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈12–13 km total.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest / Easy Hike</h3>
+
+<p>
+Rest preferred.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 18 km</h3>
+
+<p>
+Easy overall.
+<span class="pace">Last 4 km @ 4:25→4:15/km</span>
+only if ITB is quiet.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈49 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 4 -->
+
+<section id="w4">
+
+<div class="section-title">
+<h2>Week 4</h2>
+<div class="week-meta">21–27 Sep · ≈52 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+4×4 min hard, 3 min easy recoveries.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Light Unilateral Legs</h3>
+
+<p>
+2×8 unilateral + calves.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 75 min</h3>
+
+<p class="pace">
+4:50–5:15/km
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Full Body + Heavy Legs</h3>
+
+<p>
+3×4 main lift ·
+3×5 hinge ·
+2×6 unilateral.
+</p>
+
+<p class="details">
+~2 reps in reserve.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>HM-Pace Bridge</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×2 km @ 4:04–4:06/km</span> →
+2 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈13 km total.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest / Easy Hike</h3>
+
+<p>
+Keep the legs fresh.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 20 km</h3>
+
+<p>
+14 km easy →
+<span class="pace">4 km @ 4:20–4:15/km</span> →
+2 km easy.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈52 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 5 -->
+
+<section id="w5">
+
+<div class="section-title">
+<h2>Week 5</h2>
+<div class="week-meta">28 Sep–4 Oct · ≈55 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+4×4 min hard, 3 min easy.
+Upper 40–50 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Light Unilateral Legs</h3>
+
+<p>
+2×8 unilateral;
+calves 3×12;
+no failure.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 85 min</h3>
+
+<p class="pace">
+4:45–5:10/km
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Full Body + Heavy Legs</h3>
+
+<p>
+3×4 squat/press ·
+3×5 hinge ·
+2×6 unilateral.
+</p>
+
+<p class="details">
+Controlled; don't grind.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>HM Pace — 3×2 km</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×2 km @ 4:02–4:04/km</span> →
+2 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈13 km total.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest / Easy Hike</h3>
+
+<p>
+Rest preferred.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 21 km</h3>
+
+<p>
+15 km easy →
+<span class="pace">6 km @ 4:20→4:10/km</span>.
+</p>
+
+<p class="details">
+Don't force 4:02/km at the end.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈55 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 6 -->
+
+<section id="w6">
+
+<div class="section-title">
+<h2>Week 6</h2>
+<div class="week-meta">5–11 Oct · ≈57 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+4×4 min hard, 3 min easy.
+Upper 40–45 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Light Unilateral Legs</h3>
+
+<p>
+2×8 unilateral.
+Stay fresh for Friday.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 90 min</h3>
+
+<p class="details">
+≈18 km depending on pace.
+Keep conversational.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Reduced Lower Strength</h3>
+
+<p>
+Reduce lower-body volume ~20–25%.
+2–3 sets per main movement.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>2×3 km at HM Pace</h3>
+
+<p>
+2 km easy →
+<span class="pace">2×3 km @ 4:02/km</span> →
+3 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈13 km total.
+Goal: make race pace feel controlled.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest</h3>
+
+<p>
+Preferred this week.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 22 km</h3>
+
+<p class="pace">
+4:50–5:15/km
+</p>
+
+<p class="details">
+Easy throughout.
+No fast finish.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈57 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 7 -->
+
+<section id="w7">
+
+<div class="section-title">
+<h2>Week 7</h2>
+<div class="week-meta">12–18 Oct · ≈59–60 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>4×4 Assault Bike + Upper</h3>
+
+<p>
+4×4 min hard, 3 min easy.
+Cap effort around 90–95% max.
+</p>
+
+<p class="details">
+Upper ~40 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Very Light Legs</h3>
+
+<p>
+2×6 unilateral + calves.
+Minimal fatigue.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 95 min</h3>
+
+<p class="details">
+≈18–20 km.
+Conversational.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Low-Volume Maintenance</h3>
+
+<p>
+2×3–4 on main lower movements + upper.
+No grinding.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>3×3 km at HM Pace</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×3 km @ 4:02–4:04/km</span> →
+3 min jog →
+2 km easy.
+</p>
+
+<p class="details">
+≈16 km total.
+This is the biggest HM-specific session.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest</h3>
+
+<p>
+Preferred.
+Protect Sunday's long run.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 23 km</h3>
+
+<p>
+13 km easy →
+<span class="pace">5 km @ 4:15→4:10/km</span> →
+5 km easy.
+</p>
+
+<p class="details">
+Peak long run.
+Do not turn it into a race.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈59–60 km running · Peak week
+</div>
+
+</section>
+
+
+
+<!-- WEEK 8 -->
+
+<section id="w8">
+
+<div class="section-title">
+<h2>Week 8</h2>
+<div class="week-meta">19–25 Oct · ≈55–58 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>3×4 Assault Bike + Upper</h3>
+
+<p>
+3×4 min hard, 3 min easy.
+Upper 35–45 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Light Maintenance</h3>
+
+<p>
+Keep lower-body work easy and low volume.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 100 min</h3>
+
+<p class="details">
+≈19–21 km depending on pace.
+Keep it easy.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Maintenance Strength</h3>
+
+<p>
+2 sets per lower movement.
+No grinding.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>6 km Continuous HM Pace</h3>
+
+<p>
+2 km easy →
+<span class="pace">6 km @ 4:02/km continuous</span> →
+2 km easy.
+</p>
+
+<p class="details">
+≈10 km total.
+Confidence session.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest</h3>
+
+<p>
+Full rest.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 20–21 km</h3>
+
+<p class="pace">
+Easy overall
+</p>
+
+<p class="details">
+Optional final 3 km around 4:15/km if fresh.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈55–58 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 9 -->
+
+<section id="w9">
+
+<div class="section-title">
+<h2>Week 9</h2>
+<div class="week-meta">26 Oct–1 Nov · ≈44–47 km</div>
+</div>
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>3×4 Assault Bike + Upper</h3>
+
+<p>
+3×4 min hard, 3 min easy.
+Upper 35–40 min.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Very Light Maintenance</h3>
+
+<p>
+Minimal lower-body volume.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy Aerobic — 75–80 min</h3>
+
+<p class="details">
+Comfortable throughout.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Reduced Strength</h3>
+
+<p>
+~50–60% of normal lower-body volume.
+Stay well away from failure.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+<span class="day-name">FRIDAY</span>
+<span class="badge">Key Run</span>
+</div>
+
+<h3>5 km at HM Pace</h3>
+
+<p>
+2 km easy →
+<span class="pace">5 km @ 4:02/km</span> →
+2 km easy.
+</p>
+
+<p class="details">
+≈9 km total.
+Finish feeling like you could do more.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Rest</h3>
+
+<p>
+Rest.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SUNDAY</span>
+</div>
+
+<h3>Long Run — 18 km</h3>
+
+<p class="pace">
+Relaxed
+</p>
+
+<p class="details">
+No fast finish.
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈44–47 km running
+</div>
+
+</section>
+
+
+
+<!-- WEEK 10 / RACE WEEK -->
+
+<section id="w10">
+
+<div class="section-title">
+
+<h2>Week 10 — Race Week</h2>
+
+<div class="week-meta">
+2–8 Nov · ≈30 km + race
+</div>
+
+</div>
+
+
+<div class="days">
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">MONDAY</span>
+</div>
+
+<h3>3×3 Assault Bike + Upper</h3>
+
+<p>
+3×3 min controlled,
+3 min easy.
+Upper 30–35 min.
+</p>
+
+<p class="details">
+No lower-body fatigue.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">TUESDAY</span>
+</div>
+
+<h3>Upper + Very Light Legs</h3>
+
+<p>
+30–40 min.
+Only 1–2 light sets for legs.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">WEDNESDAY</span>
+</div>
+
+<h3>Easy + Strides</h3>
+
+<p>
+45–50 min easy +
+<span class="pace">4×20 sec relaxed strides</span>.
+</p>
+
+<p class="details">
+60 sec walk/jog between strides.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">THURSDAY</span>
+</div>
+
+<h3>Very Light Full Body</h3>
+
+<p>
+1–2 sets only.
+No heavy legs.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+
+<span class="day-name">FRIDAY</span>
+
+<span class="badge">
+Opener
+</span>
+
+</div>
+
+<h3>3×1 km at HM Pace</h3>
+
+<p>
+2 km easy →
+<span class="pace">3×1 km @ 4:02/km</span> →
+2 min jog →
+1–2 km easy.
+</p>
+
+<p class="details">
+≈7–8 km.
+Sharp, relaxed, and finish wanting more.
+</p>
+
+</div>
+
+
+<div class="day">
+
+<div class="day-head">
+<span class="day-name">SATURDAY</span>
+</div>
+
+<h3>Complete Rest</h3>
+
+<p>
+Or an easy 20–30 min walk.
+</p>
+
+</div>
+
+
+<div class="day key">
+
+<div class="day-head">
+
+<span class="day-name">SUNDAY</span>
+
+<span class="badge">
+RACE
+</span>
+
+</div>
+
+<h3>
+Lago Maggiore Half Marathon — 21.1 km
+</h3>
+
+<p>
+<span class="pace">
+Target: 1:25:00 · 4:02/km
+</span>
+</p>
+
+<p class="details">
+
+<strong>Pacing:</strong>
+
+first 3 km at 4:04–4:05/km →
+settle around 4:02/km →
+start racing from ~15 km if feeling good.
+
+</p>
+
+</div>
+
+
+</div>
+
+<div class="week-total">
+≈30 km training + 21.1 km race
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="note">
+
+<strong>How to use this plan</strong>
+
+<br><br>
+
+Easy = conversational.<br>
+Steady = controlled aerobic.<br>
+Threshold = hard but repeatable.<br>
+HM = 4:02/km.
+
+<br><br>
+
+The plan is built from a 1:27:35 benchmark and aims to make
+1:25 pace familiar without requiring you to race every workout.
+If current fitness has materially changed, adjust paces rather
+than forcing the numbers.
+
+<br><br>
+
+<strong>ITB:</strong>
+if pain escalates, changes your running mechanics,
+or persists/worsens, stop the session and reassess rather than
+pushing through it.
+
+</div>
+
+</footer>
+
+
+</main>
+
+</body>
+</html>
